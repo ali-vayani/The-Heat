@@ -1,3 +1,13 @@
+## This is for the KISD Heat Website Competition. 
+
+# Tech Stack
+- Frontend: Next.js
+- Backend: Firebase
+
+Extra Details
+- Tailwind CSS
+- Vanilla JS
+
 `This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

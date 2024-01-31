@@ -1,6 +1,6 @@
-## This is for the KISD Heat Website Competition. 
+# This is for the KISD Heat Website Competition. 
 
-# Tech Stack
+## Tech Stack
 - Frontend: Next.js
 - Backend: Firebase
 

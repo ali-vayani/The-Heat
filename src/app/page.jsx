@@ -2,14 +2,26 @@
 import Menu from "./components/menu";
 import Cart from "./components/cart";
 import { useEffect, useState } from "react";
+import { FIRESTORE_DB } from "../../firebaseConfig";
+import { getDoc, doc } from "firebase/firestore";
 
 export default function Home() {
 
+  const docRef = doc(FIRESTORE_DB, "Test", "OXo09hLH21wyVWZTCOYe");
   // Justs prints out cart for dev purposes
   const [itemsInCart, setItemsInCart] = useState([])
   useEffect(() => {
-    console.log(itemsInCart);
-  }, [itemsInCart])
+    const fetchData = async () => {
+      console.log(itemsInCart);
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.data()["Test"]);
+    };
+    fetchData();
+  }, [itemsInCart]);
+  
+
+
+  //             const docSnap = await getDoc(docRef); setMasjidId(docSnap.data()["favMasjids"]);
 
 
   return (

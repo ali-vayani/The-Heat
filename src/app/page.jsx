@@ -18,10 +18,6 @@ export default function Home() {
     };
     fetchData();
   }, [itemsInCart]);
-  
-
-
-  //             const docSnap = await getDoc(docRef); setMasjidId(docSnap.data()["favMasjids"]);
 
 
   return (

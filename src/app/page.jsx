@@ -35,7 +35,7 @@ export default function Home() {
 
 
 return (
-   <div className="h-max flex items-center flex-col mb-8 running-brick-pattern">
+   <div className="h-full flex items-center flex-col mb-8 brick-background ">
       <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"

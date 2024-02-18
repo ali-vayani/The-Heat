@@ -15,10 +15,13 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+/* html {
+  background: #0a0a0a;
+} */
 
 body {
   color: #efe3d9;
-  height: 100vh;
+  height: 100%;
   --units: 1.5vmax;
 	--brick1: #0a0a0a;
 	--brick2: #110808;
@@ -31,5 +34,18 @@ body {
 		repeating-linear-gradient(180deg, var(--lines) 0 5%, #fff0 0 50%, var(--lines) 0 55%, var(--brick2) 0 100% ) var(--gp-ln), 
 		repeating-linear-gradient(90deg, var(--brick1) 0 47.5%, var(--lines) 0 50%, var(--brick1) 0 97.5%, var(--lines) 0 100% ) var(--gp-ln);
 }
+.brick-background {
+  --units: 1.5vmax;
+	--brick1: #0a0a0a;
+	--brick2: #110808;
+	--lines: #333;
+	--gp-ln: 50%/calc(var(--units) * 10) calc(var(--units) * 5);
+	--gp-cn: 50%/calc(var(--units) * 5) calc(var(--units) * 5);
+	height: 100vh;
+	background: 
+		repeating-conic-gradient(from 90deg at 95% 55%, var(--lines) 0% 25%, #fff0 0% 100%) var(--gp-cn), 
+		repeating-linear-gradient(180deg, var(--lines) 0 5%, #fff0 0 50%, var(--lines) 0 55%, var(--brick2) 0 100% ) var(--gp-ln), 
+		repeating-linear-gradient(90deg, var(--brick1) 0 47.5%, var(--lines) 0 50%, var(--brick1) 0 97.5%, var(--lines) 0 100% ) var(--gp-ln);
 
+} 
 

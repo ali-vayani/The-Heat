@@ -10,10 +10,10 @@ export default function MenuItems({item, price, setItems, id}) {
                 <span className="text-3xl">{price}</span>    
             </div>
             <div className="w-4/5 flex justify-center text-center">
-                <span className="text-5xl">{item}</span>    
+                <span className="text-4xl">{item}</span>    
             </div>
             <div className="w-1/12 flex justify-center">
-                <div className="flex text-3xl bg-primary px-3 rounded-3xl justify-center items-center">
+                <div className="flex text-3xl bg-accent px-3 rounded-xl justify-center items-center">
                     <button onClick={() => setItems(prevState => [...prevState, {id}])}> + </button>
                     <div className="w-0.5 bg-text/50 h-full mx-1.5"></div>
                     <button onClick={() => setItems(prevState => prevState.filter((item, index, arr) => {
@@ -23,7 +23,6 @@ export default function MenuItems({item, price, setItems, id}) {
                             return index !== itemToRemoveIndex;
                         }))}> 
                     - </button>
-
                 </div>           
             </div>             
         </div>

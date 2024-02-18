@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 
-export default function MenuItems({item, price, setItems}) {
+export default function MenuItems({item, price, setItems, id}) {
     const [amount, setAmount] = useState();
 
     return (
@@ -14,9 +14,16 @@ export default function MenuItems({item, price, setItems}) {
             </div>
             <div className="w-1/12 flex justify-center">
                 <div className="flex text-3xl bg-primary px-3 rounded-3xl justify-center items-center">
-                    <button onClick={() => setItems(prevState => [...prevState, {item}])}> + </button>
+                    <button onClick={() => setItems(prevState => [...prevState, {id}])}> + </button>
                     <div className="w-0.5 bg-text/50 h-full mx-1.5"></div>
-                    <button className="text-4xl"> - </button>
+                    <button onClick={() => setItems(prevState => prevState.filter((item, index, arr) => {
+                            // Find the index of the item to remove
+                            const itemToRemoveIndex = arr.findIndex(i => i.id === id);
+                            // Remove the item if its index matches the current index
+                            return index !== itemToRemoveIndex;
+                        }))}> 
+                    - </button>
+
                 </div>           
             </div>             
         </div>

@@ -11,7 +11,7 @@ export default function CartItems({item, price, quantity}) {
                 <span className="text-xl">{quantity}</span>    
             </div>  
             <div className="w-2/12 flex">
-                <span className="text-xl">${price}</span>    
+                <span className="text-xl">{price}</span>    
             </div>       
         </div>
     )

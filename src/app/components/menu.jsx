@@ -15,6 +15,7 @@ export default function Menu({ setItems, itemsID }) {
                 return { id, ...docSnap.data() };
             }));
             setMenuItems(items);
+            console.log(items)
         };
         
         fetchMenuItems();
@@ -25,7 +26,7 @@ export default function Menu({ setItems, itemsID }) {
             <h2 className=" mt-4 text-7xl mb-4">Menu</h2>
             { //Maps through the menu items and displays them
             menuItems.map((item, index) => (
-                <MenuItems key={index} price={`$${parseFloat(item.price).toFixed(2)}`} item={item.item} setItems={setItems} />
+                <MenuItems key={index} price={`$${parseFloat(item.price).toFixed(2)}`} item={item.item} setItems={setItems} id={item.id}/>
             ))}
         </div>
     );

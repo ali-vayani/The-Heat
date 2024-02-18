@@ -1,15 +1,15 @@
 'use client'
 import { useEffect, useState } from "react";
 
-export default function MenuItems({item, price, limit, setItems}) {
+export default function MenuItems({item, price, setItems}) {
     const [amount, setAmount] = useState();
 
     return (
         <div className="bg-accent/50 w-11/12 h-28 flex justify-center items-center rounded-xl my-1.5">
-            <div className="w-1/12 flex justify-center">
-                <span className="text-5xl">{price}</span>    
+            <div className="w-1/12 flex justify-center ml-1">
+                <span className="text-3xl">{price}</span>    
             </div>
-            <div className="w-4/5 flex justify-center">
+            <div className="w-4/5 flex justify-center text-center">
                 <span className="text-5xl">{item}</span>    
             </div>
             <div className="w-1/12 flex justify-center">

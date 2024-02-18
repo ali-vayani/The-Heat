@@ -6,7 +6,7 @@ export default function MenuItems({item, price, setItems, id}) {
 
     return (
         <div className="bg-primary w-11/12 h-28 flex justify-center items-center rounded-xl my-1.5">
-            <div className="w-1/12 flex justify-center ml-1">
+            <div className="w-1/12 flex justify-center ml-2">
                 <span className="text-3xl">{price}</span>    
             </div>
             <div className="w-4/5 flex justify-center text-center">

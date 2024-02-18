@@ -40,7 +40,7 @@ export default function Cart({items}) {
     return (
         <div className="w-1/3 flex items-center justify-start rounded-xl ml-6 mr-12 flex-col">
             <div className="w-full">
-                <h2 className="text-9xl mt-4 mb-4 text-center"> Cart </h2>
+                <h2 className="text-7xl mt-4 mb-4 text-center"> Cart </h2>
                 <div className="w-11/12 flex justify-evenly items-center text-3xl mb-4">
                     <span>Items</span>
                     <span>Quantity</span>
@@ -58,7 +58,7 @@ export default function Cart({items}) {
                 <div className="h-0.5 bg-text w-full my-1.5"></div>
                 <div className="flex justify-between items-center mx-1.5">
                     <span>Total</span>
-                    <span>{total}</span>
+                    <span>${total}</span>
                 </div>
             </div>
         </div>

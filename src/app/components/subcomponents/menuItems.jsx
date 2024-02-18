@@ -5,7 +5,7 @@ export default function MenuItems({item, price, setItems, id}) {
     const [amount, setAmount] = useState();
 
     return (
-        <div className="bg-accent/50 w-11/12 h-28 flex justify-center items-center rounded-xl my-1.5">
+        <div className="bg-primary w-11/12 h-28 flex justify-center items-center rounded-xl my-1.5">
             <div className="w-1/12 flex justify-center ml-1">
                 <span className="text-3xl">{price}</span>    
             </div>

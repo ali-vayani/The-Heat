@@ -4,6 +4,9 @@ import Cart from "./components/cart";
 import { useEffect, useState } from "react";
 import { FIRESTORE_DB } from "../../firebaseConfig";
 import { getDocs, doc, collection } from "firebase/firestore";
+// import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
+import Image from "next/image";
+
 
 export default function Home() {
 
@@ -31,15 +34,20 @@ export default function Home() {
   }, []);
 
 
-  return (
-   <div className="h-max flex items-center flex-col mb-8">
-      <h1 className="text-9xl mt-16 mb-2"> The Heat </h1>
-      <h2 className="text-7xl"> by <span className="text-accent">KCAL</span></h2>
-      <div className="w-full flex mt-12 flex-1">
+return (
+   <div className="h-max flex items-center flex-col mb-8 running-brick-pattern">
+      <Image
+              src="/TheHeatLogo.png"
+              alt="The Heat Logo"
+              width={750}
+              height={240}
+              priority
+            />
+      <div className="w-full flex mt-12 flex-1 backdrop-blur-sm">
         <Menu setItems={setItemsInCart} itemsID={items}/>
         <Cart items={itemsInCart}/>
       </div>
-
    </div>
-  );
+);
+
 }

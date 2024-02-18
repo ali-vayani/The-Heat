@@ -1,7 +1,9 @@
 import { Sriracha } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 
 const sriracha = Sriracha({subsets: ['latin'], weight: '400'});
+const sora = Sora({weight: '800', variable: '400', subsets: ['latin']})
 
 export const metadata = {
   title: "The Heat",
@@ -11,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={sriracha.className}>{children}</body>
+      <body className={sora.className}>{children}</body>
     </html>
   );
 }

@@ -35,7 +35,7 @@ export default function Home() {
 
 
 return (
-   <div className="h-full flex items-center flex-col mb-8 brick-background ">
+   <div className="h-full flex items-center flex-col mb-8 brick-background">
       <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"
@@ -43,9 +43,9 @@ return (
               height={240}
               priority
             />
-      <div className="w-full flex mt-12 flex-1 backdrop-blur-sm">
-        <Menu setItems={setItemsInCart} itemsID={items}/>
-        <Cart items={itemsInCart}/>
+      <div className="w-full flex mt-12 flex-1 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
+        <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
+        <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
    </div>
 );

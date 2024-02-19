@@ -43,7 +43,7 @@ return (
               height={240}
               priority
             />
-      <div className="w-full flex mt-12 flex-1 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
+      <div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>

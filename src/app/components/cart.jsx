@@ -2,10 +2,18 @@ import { useEffect, useState } from "react"
 import CartItems from "./subcomponents/cartItem"
 import { FIRESTORE_DB } from "../../../firebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
+import { useRouter } from 'next/navigation';
 
 export default function Cart({items}) {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0.00)
+
+    const router = useRouter();
+    const navigateToOrder = () => {
+      localStorage.setItem('itemsInCart', JSON.stringify(items));
+      router.push('/order');
+    };
+
     useEffect(() => {
         const fetchMenuItems = async () => {
             const itemsWithQuantity = items.reduce((acc, item) => {
@@ -60,6 +68,7 @@ export default function Cart({items}) {
                     <span className="xs:max-sm:mx-3">Total: </span>
                     <span> &#160; &#160;${total}</span>
                 </div>
+                <button onClick={navigateToOrder} className="w-full bg-accent mt-5 p-3 rounded-xl">Place Order</button>
             </div>
         </div>
     )

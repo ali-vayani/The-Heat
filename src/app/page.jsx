@@ -56,7 +56,6 @@ return (
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
       <button onClick={() => router.push('/admin')}>Go to Admin Dashboard</button>
-      <button onClick={navigateToOrder}>Go to Order</button>
    </div>
 );
 

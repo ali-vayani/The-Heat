@@ -1,12 +1,14 @@
 "use client"
 import { useState } from "react";
+import { FIRESTORE_DB } from "../../../../firebaseConfig";
+import { doc, setDoc } from "firebase/firestore"; 
 
 export default function AddMenuItem({ setItems, input }) {
     const [item, setItem] = useState('');
     const [price, setPrice] = useState('');
-    const [amount, setAmount] = useState(1); // Assuming you want to start with 1 by default
+    const [id, setId] = useState(100000 + Math.floor(Math.random()*10));
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // Validate the inputs as needed
         if (!item || !price) {
             alert("Please fill out all fields correctly.");
@@ -14,17 +16,23 @@ export default function AddMenuItem({ setItems, input }) {
         }
 
         const newItem = { item, price };
+        await setDoc(doc(FIRESTORE_DB, "newMenu", id.toString()), {
+            newItem
+          });
         setItems(prevState => [...prevState, newItem]);
+
+        
 
         // Reset the form fields
         setItem('');
         setPrice('');
+        setId(1000000000 + Math.floor(Math.random()*1000000000));
     };
 
     if(input == true)
     {
         return (
-            <div className="bg-primary w-11/12 h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4">
+            <div className="bg-primary w-11/12 h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4 text-primary">
                 <input
                     className="text-2xl p-2 rounded my-2 w-4/12 mx-2"
                     type="text"
@@ -40,7 +48,7 @@ export default function AddMenuItem({ setItems, input }) {
                     onChange={(e) => setPrice(e.target.value)}
                 />
                 <button
-                    className="bg-accent text-xl p-2 rounded my-2 w-4/12 mx-2"
+                    className="bg-accent text-xl p-2 rounded my-2 w-4/12 mx-2 text-text"
                     onClick={handleSubmit}
                 >
                     Add Item
@@ -50,11 +58,13 @@ export default function AddMenuItem({ setItems, input }) {
     } else {
         return (
             <div className="bg-primary w-11/12 h-auto flex flex-col justify-center items-center rounded-xl my-1.5 p-4">
+                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2">{}</div> 
+                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2">{}</div> 
                 <button
-                    className="bg-accent text-3xl p-2 rounded-full w-14 h-14"
+                    className="bg-accent text-xl p-2 rounded my-2 w-4/12 mx-2 text-text"
                     onClick={handleSubmit}
                 >
-                    +
+                    Edit Item
                 </button>
             </div>
         );

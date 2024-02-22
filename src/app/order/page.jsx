@@ -16,11 +16,14 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [itemsInCart, setItemsInCart] = useState([])
 
-  // Justs prints out stuff for dev purposes
   useEffect(() => {
-    console.log(itemsInCart)
-    console.log(items)
-  }, [itemsInCart, items]);
+    const storedItems = JSON.parse(localStorage.getItem('itemsInCart'));
+    if (storedItems) {
+      // Set the items in state or handle them as needed
+      setItemsInCart(storedItems);
+    }
+  }, []);
+  
 
   // Fetches all menu item IDs and sets them
   useEffect(() => {

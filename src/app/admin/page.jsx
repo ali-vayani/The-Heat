@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 // import Link from 'next/link';
 // import Menu from "./components/menu";
 // import Cart from "./components/cart";
@@ -7,9 +7,19 @@
 // import { getDocs, doc, collection } from "firebase/firestore";
 // // import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
 import Image from "next/image";
+import SetUpMenu from "../components/setUpMenu";
+import { useRouter } from 'next/navigation';
+
 
 
 export default function Home() {
+
+  const DestinationPage = () => {
+    const router = useRouter();
+    const { key } = router.query; // Access query parameters
+  
+    console.log(key)
+  };
 
 //   const menuRef = collection(FIRESTORE_DB, "Menu"); // To access firestore
 //   const [items, setItems] = useState([])
@@ -40,15 +50,14 @@ return (
        <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"
-              width={750}
+              width={250}
               height={240}
               priority
             />
-      {/*<div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
-        <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
-        <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
+            <h1 className="text-9xl mt-8 mb-2"> Admin Page </h1>
+      <div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
+        <SetUpMenu/>
       </div>
-      <Link href="/admin/dashboard">Go to Admin Dashboard</Link> */}
    </div>
 );
 

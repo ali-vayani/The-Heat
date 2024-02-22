@@ -7,6 +7,7 @@ import { FIRESTORE_DB } from "../../firebaseConfig";
 import { getDocs, doc, collection } from "firebase/firestore";
 // import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 
 export default function Home() {
@@ -15,6 +16,12 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [itemsInCart, setItemsInCart] = useState([])
 
+  const router = useRouter();
+  const navigateToOrder = () => {
+    localStorage.setItem('itemsInCart', JSON.stringify(itemsInCart));
+    router.push('/order');
+  };
+  
   // Justs prints out stuff for dev purposes
   useEffect(() => {
     console.log(itemsInCart)
@@ -48,8 +55,8 @@ return (
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
-      <Link href="/admin">Go to Admin Dashboard</Link>
-      <Link href="/order">Go to Order</Link>
+      <button onClick={() => router.push('/admin')}>Go to Admin Dashboard</button>
+      <button onClick={navigateToOrder}>Go to Order</button>
    </div>
 );
 

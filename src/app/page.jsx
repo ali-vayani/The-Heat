@@ -16,10 +16,16 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [itemsInCart, setItemsInCart] = useState([])
 
+  const [name, setName] = useState('');
+  const [hour, setHour] = useState(1);
+  const [minute, setMinute] = useState(0);
+  const [howEat, setHowEat] = useState('plated');
+  const [howPay, setHowPay] = useState('card');
+
   const router = useRouter();
   const navigateToOrder = () => {
     localStorage.setItem('itemsInCart', JSON.stringify(itemsInCart));
-    router.push('/order');
+    // router.push('/order');
   };
   
   // Justs prints out stuff for dev purposes
@@ -39,6 +45,17 @@ export default function Home() {
     .catch((error) => {
       console.error("Error getting documents: ", error);
     });
+
+    const savedStates = JSON.parse(localStorage.getItem('orderInfo'));
+
+    // If data exists, update relevant states using savedStates
+    if (savedStates) {
+      setName(savedStates.name);
+      setHour(savedStates.hour);
+      setMinute(savedStates.minute);
+      setHowEat(savedStates.howEat);
+      setHowPay(savedStates.howPay);
+    }
   }, []);
 
 
@@ -56,7 +73,8 @@ return (
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
       <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
-      <OrderInfo/>
+      <OrderInfo onButtonClick={navigateToOrder}/>
+      
       <button onClick={() => router.push('/admin')}>Go to Admin Dashboard</button>
    </div>
 );

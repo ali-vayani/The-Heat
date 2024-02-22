@@ -7,7 +7,9 @@ import { FIRESTORE_DB } from "../../firebaseConfig";
 import { getDocs, doc, collection } from "firebase/firestore";
 import OrderInfo from './components/subcomponents/orderInfo';
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
+// import { google } from 'googleapis';
+// import axios from 'axios';
 
 
 export default function Home() {
@@ -16,16 +18,28 @@ export default function Home() {
   const [items, setItems] = useState([])
   const [itemsInCart, setItemsInCart] = useState([])
 
+  // const { google } = require('googleapis');
+
+
+  // const router = useRouter();
+
   const [name, setName] = useState('');
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
   const [howEat, setHowEat] = useState('plated');
   const [howPay, setHowPay] = useState('card');
 
-  const router = useRouter();
+
+  const apiKey = 'AIzaSyA20mZPhBufcl6Oh6Z76VwC_sv8fu4yPT4';
+
+
+
+  const targetSpreadsheetId = '1_RQN8NoETINGoCZdIFTpZyw6VMAFmrWr3EAz7Dl3VNU';
+  const sourceRange = 'Sheet1!A1:Z100';
+
   const navigateToOrder = () => {
     localStorage.setItem('itemsInCart', JSON.stringify(itemsInCart));
-    // router.push('/order');
+    // exportDataToGoogleSheet();
   };
   
   // Justs prints out stuff for dev purposes
@@ -46,18 +60,35 @@ export default function Home() {
       console.error("Error getting documents: ", error);
     });
 
-    const savedStates = JSON.parse(localStorage.getItem('orderInfo'));
-
-    // If data exists, update relevant states using savedStates
-    if (savedStates) {
-      setName(savedStates.name);
-      setHour(savedStates.hour);
-      setMinute(savedStates.minute);
-      setHowEat(savedStates.howEat);
-      setHowPay(savedStates.howPay);
-    }
   }, []);
 
+  // useEffect(() => {
+  //   const localStorageData = JSON.parse(localStorage.getItem('orderInfo'));
+  //   if (!localStorageData) {
+  //     console.error("Data not found in localStorage");
+  //     return;
+  //   }
+
+  //   const values = localStorageData.map(row => {
+  //     return { values: row };
+  //   });
+
+  //   const auth = new google.auth.GoogleAuth({
+  //     apiKey: apiKey,
+  //   });
+  //   const sheets = google.sheets({ version: 'v4', auth });
+
+  //   sheets.spreadsheets.values.update({
+  //     spreadsheetId: targetSpreadsheetId,
+  //     range: 'Sheet1',
+  //     valueInputOption: 'RAW',
+  //     resource: { values: values },
+  //   }).then(response => {
+  //     console.log('Data copied successfully');
+  //   }).catch(error => {
+  //     console.error('Error updating spreadsheet:', error);
+  //   });
+  // }, []);
 
 return (
    <div className="h-full flex items-center flex-col mb-8 brick-background">

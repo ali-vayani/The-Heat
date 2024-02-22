@@ -37,6 +37,7 @@ export default function OrderInfo()
                 <button className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Card</button>
                 <button className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Pre Paid</button>
             </div>
+            <button className="w-full bg-accent mt-4 p-3 rounded-xl text-4xl">Place Order</button>
 
         </div>
     )

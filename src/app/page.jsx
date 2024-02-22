@@ -5,7 +5,7 @@ import Cart from "./components/cart";
 import { useEffect, useState } from "react";
 import { FIRESTORE_DB } from "../../firebaseConfig";
 import { getDocs, doc, collection } from "firebase/firestore";
-// import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
+import OrderInfo from './components/subcomponents/orderInfo';
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
@@ -55,6 +55,8 @@ return (
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
+      <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
+      <OrderInfo/>
       <button onClick={() => router.push('/admin')}>Go to Admin Dashboard</button>
    </div>
 );

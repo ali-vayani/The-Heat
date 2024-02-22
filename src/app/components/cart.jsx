@@ -68,7 +68,6 @@ export default function Cart({items}) {
                     <span className="xs:max-sm:mx-3">Total: </span>
                     <span> &#160; &#160;${total}</span>
                 </div>
-                <button onClick={navigateToOrder} className="w-full bg-accent mt-5 p-3 rounded-xl">Place Order</button>
             </div>
         </div>
     )

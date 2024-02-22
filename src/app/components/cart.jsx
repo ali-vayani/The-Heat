@@ -55,10 +55,10 @@ export default function Cart({items}) {
                 </div>
             </div>
             <div className="w-11/12 flex flex-col justify-center items-center text-2xl mb-4 xs:max-sm:w-full">
-                <div className="h-0.5 bg-text w-full my-1.5"></div>
-                <div className="flex justify-between items-center mx-1.5">
-                    <span className="xs:max-sm:mx-3">Total:</span>
-                    <span>${total}</span>
+                <div className="h-0.5 bg-text w-full my-3"></div>
+                <div className="flex justify-between items-between mx-1.5 w-full">
+                    <span className="xs:max-sm:mx-3">Total: </span>
+                    <span> &#160; &#160;${total}</span>
                 </div>
             </div>
         </div>

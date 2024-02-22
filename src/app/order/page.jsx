@@ -1,10 +1,11 @@
-"use client"
-import Menu from "./components/menu";
-import Cart from "./components/cart";
-import { useEffect, useState } from "react";
-import { FIRESTORE_DB } from "../../firebaseConfig";
-import { getDocs, doc, collection } from "firebase/firestore";
-// import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
+// "use client"
+// import Link from 'next/link';
+// import Menu from "./components/menu";
+// import Cart from "./components/cart";
+// import { useEffect, useState } from "react";
+// import { FIRESTORE_DB } from "../../firebaseConfig";
+// import { getDocs, doc, collection } from "firebase/firestore";
+// // import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
 import Image from "next/image";
 
 
@@ -36,17 +37,18 @@ export default function Home() {
 
 return (
    <div className="h-full flex items-center flex-col mb-8 brick-background">
-      {/* <Image
+       <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"
               width={750}
               height={240}
               priority
             />
-      <div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
+      {/*<div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
-      </div> */}
+      </div>
+      <Link href="/admin/dashboard">Go to Admin Dashboard</Link> */}
    </div>
 );
 

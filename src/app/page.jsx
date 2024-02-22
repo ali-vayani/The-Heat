@@ -49,6 +49,7 @@ return (
         <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
       </div>
       <Link href="/admin">Go to Admin Dashboard</Link>
+      <Link href="/order">Go to Order</Link>
    </div>
 );
 

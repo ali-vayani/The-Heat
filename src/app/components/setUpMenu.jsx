@@ -7,7 +7,7 @@ import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
 export default function SetUpMenu() {
 
     const [dbIDs, setDbIDs] = useState([]);
-    const newMenuCol = collection(FIRESTORE_DB, "newMenu"); // To access firestore
+    const newMenuCol = collection(FIRESTORE_DB, "Menu"); // To access firestore
     const [menuItems, setMenuItems] = useState([<AddMenuItem key={0} setItems={() => {}} setDbID={setDbIDs}/>]);
     const [currentMenuItems, setCurrentMenuItems] = useState([]);
 
@@ -49,13 +49,13 @@ export default function SetUpMenu() {
         console.log(dbIDs)
         setCurrentMenuItems([]);
          dbIDs.map( async (id) => {
-                const docRef = doc(FIRESTORE_DB, "newMenu", id);
+                const docRef = doc(FIRESTORE_DB, "Menu", id);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data()["newItem"]["price"]);
+                    console.log("Document data:", docSnap.data());
                     setCurrentMenuItems(oldItems => [
                         ...oldItems,
-                        <EditMenuItem key={id} items={docSnap.data()['newItem']['item']} prices={docSnap.data()['newItem']['price']} id={id} setListOfIDs={setDbIDs}/>
+                        <EditMenuItem key={id} items={docSnap.data()['item']} prices={docSnap.data()['price']} id={id} setListOfIDs={setDbIDs}/>
                     ])
                 }
             })

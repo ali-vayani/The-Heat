@@ -17,14 +17,15 @@ export default function EditMenuItem({ setItems, items, prices, id, setListOfIDs
         }
 
         const newItem = { item, price };
-        await setDoc(doc(FIRESTORE_DB, "newMenu", id), {
-            newItem
+        await setDoc(doc(FIRESTORE_DB, "Menu", id), {
+            item: newItem.item,
+            price: parseFloat(newItem.price),
           });
         setIsEditable(false)
     };
     const handleDelete = async () => {
         if(confirm("Are you sure you want to delete this item?")) {
-            await deleteDoc(doc(FIRESTORE_DB, "newMenu", id));
+            await deleteDoc(doc(FIRESTORE_DB, "menu", id));
             setListOfIDs(prevIDs => prevIDs.filter(currentId => currentId !== id));
         }
     };

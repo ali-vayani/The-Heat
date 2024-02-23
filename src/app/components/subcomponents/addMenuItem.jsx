@@ -16,8 +16,9 @@ export default function AddMenuItem({ setItems, setDbID }) {
         }
 
         const newItem = { item, price };
-        await setDoc(doc(FIRESTORE_DB, "newMenu", id.toString()), {
-            newItem
+        await setDoc(doc(FIRESTORE_DB, "Menu", id.toString()), {
+            item: newItem.item,
+            price: parseFloat(newItem.price),
           });
         setItems(prevState => [...prevState, newItem]);
         setDbID(prevState => [...prevState, id.toString()]);

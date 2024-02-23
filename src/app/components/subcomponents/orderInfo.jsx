@@ -1,15 +1,40 @@
 import { useEffect, useState } from "react";
+import { FIRESTORE_DB } from "../../../../firebaseConfig";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import PreviousMap from "postcss/lib/previous-map";
 
 
-export default function OrderInfo({onButtonClick})
+export default function OrderInfo({orderIDs, total})
 {
     const [name, setName] = useState('');
     const [hour, setHour] = useState(1);
     const [minute, setMinute] = useState(0);
-    const [howEat, setHowEat] = useState('plated');
-    const [howPay, setHowPay] = useState('card');
+    const [howEat, setHowEat] = useState('');
+    const [howPay, setHowPay] = useState('');
+    const [hasOrdered, setHasOrdered] = useState(false);
+    const [id, setId] = useState(100000 + Math.floor(Math.random()*10));
+    const[order, setOrder] = useState([])
 
-    const handleButtonClick = () => {
+    const displayPayment = (paymentMethod) => {
+        return `flex-1 text-4xl rounded-xl m-4 py-1 ${howPay === paymentMethod ? 'bg-selected' : 'bg-accent'}`;
+    };
+    const displayEating = (eatingMethod) => {
+        return `flex-1 text-4xl rounded-xl m-4 py-1 ${howEat === eatingMethod ? 'bg-selected' : 'bg-accent'}`;
+    };
+
+    useEffect(() => {
+        setOrder([]);
+        const fetchFromDB = async () => {
+            //const docRef = doc(FIRESTORE_DB, "Orders", id.toString());
+            orderIDs.map( async (id) => {
+                const docSnap = await getDoc(doc(FIRESTORE_DB, "Menu", id['id'].toString()))
+                setOrder(prev => [...prev, docSnap.data()['item']])
+            })
+        }
+        fetchFromDB();
+    },[orderIDs])
+
+    const handleButtonClick = async () => {
         const updatedStates = {
           name,
           hour,
@@ -17,10 +42,16 @@ export default function OrderInfo({onButtonClick})
           howEat,
           howPay,
         };
-
-        localStorage.setItem('orderInfo', JSON.stringify(updatedStates));
-
-        onButtonClick(updatedStates); // Pass updated states to parent component
+        await setDoc(doc(FIRESTORE_DB, "Orders", id.toString()), {
+            name: updatedStates.name,
+            hour: updatedStates.hour,
+            minute: updatedStates.minute,
+            howEat: updatedStates.howEat,
+            howPay: updatedStates.howPay,
+            order: order,
+            total: total
+          });
+          setHasOrdered(true);
       };
 
     return (
@@ -56,15 +87,20 @@ export default function OrderInfo({onButtonClick})
                 />
             </div>
             <div className="flex justify-between bg-primary w-full rounded-xl my-2">
-                <button onClick={() => setHowEat('plated')} className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Plated</button>
-                <button onClick={() => setHowEat('to go')} className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">To Go</button>
+                <button onClick={() => setHowEat('plated')} className={displayEating('plated')}>Plated</button>
+                <button onClick={() => setHowEat('to go')} className={displayEating('to go')}>To Go</button>
             </div>
             <div className="flex justify-between bg-primary w-full rounded-xl my-2">
-                <button onClick={() => setHowPay('cash')} className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Cash</button>
-                <button onClick={() => setHowPay('card')} className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Card</button>
-                <button onClick={() => setHowPay('pre paid')} className="flex-1 bg-accent text-4xl rounded-xl m-4 py-1">Pre Paid</button>
+                <button onClick={() => setHowPay('cash')} className={displayPayment('cash')}>Cash</button>
+                <button onClick={() => setHowPay('card')} className={displayPayment('card')}>Card</button>
+                <button onClick={() => setHowPay('pre paid')} className={displayPayment('pre paid')}>Pre Paid</button>
             </div>
-            <button onClick={handleButtonClick} className="w-full bg-accent mt-4 p-3 rounded-xl text-4xl">Place Order</button>
+            {
+                !hasOrdered && (
+                    <button onClick={handleButtonClick} className="w-full bg-accent mt-4 p-3 rounded-xl text-4xl">Place Order</button>
+                )
+            }
+
 
         </div>
     )

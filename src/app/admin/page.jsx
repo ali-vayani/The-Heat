@@ -13,29 +13,6 @@ import { useRouter } from 'next/navigation';
 
 
 export default function Home() {
-//   const menuRef = collection(FIRESTORE_DB, "Menu"); // To access firestore
-//   const [items, setItems] = useState([])
-//   const [itemsInCart, setItemsInCart] = useState([])
-
-//   // Justs prints out stuff for dev purposes
-//   useEffect(() => {
-//     console.log(itemsInCart)
-//     console.log(items)
-//   }, [itemsInCart, items]);
-
-//   // Fetches all menu item IDs and sets them
-//   useEffect(() => {
-//     getDocs(menuRef)
-//     .then((snapshot) => {
-//       // Map each document to its document ID
-//       const docIds = snapshot.docs.map(doc => doc.id);
-//       setItems(docIds) // Sets the document IDs to the state
-//     })
-//     .catch((error) => {
-//       console.error("Error getting documents: ", error);
-//     });
-//   }, []);
-
 
 return (
    <div className="h-full flex items-center flex-col mb-8 brick-background">

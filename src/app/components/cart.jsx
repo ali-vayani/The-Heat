@@ -4,7 +4,7 @@ import { FIRESTORE_DB } from "../../../firebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
 import { useRouter } from 'next/navigation';
 
-export default function Cart({items}) {
+export default function Cart({items, setTotalForHome}) {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0.00)
 
@@ -40,6 +40,7 @@ export default function Cart({items}) {
                 return acc + (item.price * item.quantity);
             }, 0);
             setTotal(parseFloat(total).toFixed(2));
+            setTotalForHome(parseFloat(total).toFixed(2));
         };
     
         fetchMenuItems();

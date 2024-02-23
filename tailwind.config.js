@@ -19,7 +19,8 @@ module.exports = {
         'primary': '#5d2c2c',
         'secondary': '#684638',
         'accent': '#b87960',
-        'redd': '#a95050'
+        'redd': '#a95050',
+        'selected': '#744836'
        },       
              
        

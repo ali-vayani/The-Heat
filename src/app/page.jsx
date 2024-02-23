@@ -16,6 +16,7 @@ export default function Home() {
 
   const menuRef = collection(FIRESTORE_DB, "Menu"); // To access firestore
   const [items, setItems] = useState([])
+  const [total, setTotal] = useState()
   const [itemsInCart, setItemsInCart] = useState([])
 
   // const { google } = require('googleapis');
@@ -100,10 +101,10 @@ return (
             />
       <div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
-        <Cart items={itemsInCart} className="xs:max-sm:w-full "/>
+        <Cart items={itemsInCart} className="xs:max-sm:w-full " setTotalForHome={setTotal}/>
       </div>
       <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
-      <OrderInfo onButtonClick={navigateToOrder}/>
+      <OrderInfo orderIDs={itemsInCart} total={total}/>
       
       <Link href={"/admin"}>Go to Admin Dashboard</Link>
    </div>

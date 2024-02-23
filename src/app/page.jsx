@@ -20,7 +20,6 @@ export default function Home() {
 
   // const { google } = require('googleapis');
 
-
   // const router = useRouter();
 
   const [name, setName] = useState('');
@@ -106,7 +105,7 @@ return (
       <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
       <OrderInfo onButtonClick={navigateToOrder}/>
       
-      <button onClick={() => router.push('/admin')}>Go to Admin Dashboard</button>
+      <Link href={"/admin"}>Go to Admin Dashboard</Link>
    </div>
 );
 

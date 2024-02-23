@@ -2,7 +2,7 @@
 // import Link from 'next/link';
 // import Menu from "./components/menu";
 // import Cart from "./components/cart";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { FIRESTORE_DB } from "../../firebaseConfig";
 // import { getDocs, doc, collection } from "firebase/firestore";
 // // import TheHeatLogo from './TheHeatLogo.png'; // Adjust the relative path as necessary
@@ -13,14 +13,6 @@ import { useRouter } from 'next/navigation';
 
 
 export default function Home() {
-
-  const DestinationPage = () => {
-    const router = useRouter();
-    const { key } = router.query; // Access query parameters
-  
-    console.log(key)
-  };
-
 //   const menuRef = collection(FIRESTORE_DB, "Menu"); // To access firestore
 //   const [items, setItems] = useState([])
 //   const [itemsInCart, setItemsInCart] = useState([])

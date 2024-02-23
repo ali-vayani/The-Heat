@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FIRESTORE_DB } from "../../../../firebaseConfig";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import PreviousMap from "postcss/lib/previous-map";
 
 
 export default function OrderInfo({orderIDs, total})

@@ -20,7 +20,7 @@ export default function AddMenuItem({ setItems, setDbID }) {
             newItem
           });
         setItems(prevState => [...prevState, newItem]);
-        setDbID(prevState => [...prevState, id]);
+        setDbID(prevState => [...prevState, id.toString()]);
         console.log("SET ID")
 
         
@@ -43,8 +43,8 @@ export default function AddMenuItem({ setItems, setDbID }) {
             />
             <input
                 className="text-2xl p-2 rounded my-2 w-4/12 mx-2"
-                type="text"
-                placeholder="Price"
+                type="number"
+                placeholder="Price ($)"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
             />

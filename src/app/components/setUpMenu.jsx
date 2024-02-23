@@ -10,28 +10,57 @@ export default function SetUpMenu() {
     const newMenuCol = collection(FIRESTORE_DB, "newMenu"); // To access firestore
     const [menuItems, setMenuItems] = useState([<AddMenuItem key={0} setItems={() => {}} setDbID={setDbIDs}/>]);
     const [currentMenuItems, setCurrentMenuItems] = useState([]);
+
+    // useEffect(() => {
+    //     const getFromDB = async () => {
+    //         getDocs(newMenuCol)
+    //             .then((snapshot) => {
+    //                 console.log("I DON'T LIKT THIS");
+    //                 // Filter out IDs that are already displayed
+    //                 const newDocIds = snapshot.docs.map(doc => doc.id).filter(id => !dbIDs.includes(id));
+                    
+    //                 newDocIds.forEach(async (id) => { // Use forEach for async operations inside
+    //                     const docRef = doc(FIRESTORE_DB, "newMenu", id);
+    //                     const docSnap = await getDoc(docRef);
+    //                     if (docSnap.exists()) {
+
+    //                         setCurrentMenuItems(oldItems => [
+    //                             ...oldItems,
+    //                             <EditMenuItem key={id} items={docSnap.data()['newItem']['item']} prices={docSnap.data()['newItem']['price']} id={id} setListOfIDs={setDbIDs}/>
+    //                         ]);
+    //                         // Optionally, update dbIDs to include this ID, ensuring it's not added again
+    //                         setDbIDs(oldIDs => [...oldIDs, id]);
+    //                     }
+    //                 });
+    //             });
+    //     };
+    //     getFromDB();
+    // }, [dbIDs]); // Depending on your logic, you might not need dbIDs in your dependency array
+
     useEffect(() => {
-        const getFromDB = async () => {
-            getDocs(newMenuCol)
-            .then((snapshot, index) => {
-                console.log(snapshot)
-              // Map each document to its document ID
-              const docIds = snapshot.docs.map(doc => doc.id);
-              docIds.map( async (id) => {
+        getDocs(newMenuCol).then((snapshot) => {
+            const docIds = snapshot.docs.map(doc => doc.id);
+            setDbIDs(docIds)
+            console.log(dbIDs)
+        })
+    },[])
+
+    useEffect(() => {
+        console.log(dbIDs)
+        setCurrentMenuItems([]);
+         dbIDs.map( async (id) => {
                 const docRef = doc(FIRESTORE_DB, "newMenu", id);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     console.log("Document data:", docSnap.data()["newItem"]["price"]);
                     setCurrentMenuItems(oldItems => [
                         ...oldItems,
-                        <EditMenuItem key={index} items={docSnap.data()['newItem']['item']} prices={docSnap.data()['newItem']['price']} id={id}/>
+                        <EditMenuItem key={id} items={docSnap.data()['newItem']['item']} prices={docSnap.data()['newItem']['price']} id={id} setListOfIDs={setDbIDs}/>
                     ])
                 }
             })
-        })
-    }
-        getFromDB();
     },[dbIDs])
+    
 
     const addMenuItem = () => {
         const newItemKey = menuItems.length;

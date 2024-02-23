@@ -47,7 +47,7 @@ return (
               priority
             />
             <h1 className="text-9xl mt-8 mb-2"> Admin Page </h1>
-      <div className="w-full flex mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
+      <div className="w-full flex justify-center mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <SetUpMenu/>
       </div>
    </div>

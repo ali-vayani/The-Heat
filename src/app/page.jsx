@@ -19,10 +19,6 @@ export default function Home() {
   const [total, setTotal] = useState()
   const [itemsInCart, setItemsInCart] = useState([])
 
-  // const { google } = require('googleapis');
-
-  // const router = useRouter();
-
   const [name, setName] = useState('');
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
@@ -30,12 +26,8 @@ export default function Home() {
   const [howPay, setHowPay] = useState('card');
 
 
-  const apiKey = 'AIzaSyA20mZPhBufcl6Oh6Z76VwC_sv8fu4yPT4';
 
 
-
-  const targetSpreadsheetId = '1_RQN8NoETINGoCZdIFTpZyw6VMAFmrWr3EAz7Dl3VNU';
-  const sourceRange = 'Sheet1!A1:Z100';
 
   const navigateToOrder = () => {
     localStorage.setItem('itemsInCart', JSON.stringify(itemsInCart));
@@ -61,34 +53,6 @@ export default function Home() {
     });
 
   }, []);
-
-  // useEffect(() => {
-  //   const localStorageData = JSON.parse(localStorage.getItem('orderInfo'));
-  //   if (!localStorageData) {
-  //     console.error("Data not found in localStorage");
-  //     return;
-  //   }
-
-  //   const values = localStorageData.map(row => {
-  //     return { values: row };
-  //   });
-
-  //   const auth = new google.auth.GoogleAuth({
-  //     apiKey: apiKey,
-  //   });
-  //   const sheets = google.sheets({ version: 'v4', auth });
-
-  //   sheets.spreadsheets.values.update({
-  //     spreadsheetId: targetSpreadsheetId,
-  //     range: 'Sheet1',
-  //     valueInputOption: 'RAW',
-  //     resource: { values: values },
-  //   }).then(response => {
-  //     console.log('Data copied successfully');
-  //   }).catch(error => {
-  //     console.error('Error updating spreadsheet:', error);
-  //   });
-  // }, []);
 
 return (
    <div className="h-full flex items-center flex-col mb-8 brick-background">

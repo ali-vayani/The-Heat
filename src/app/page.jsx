@@ -8,8 +8,8 @@ import { getDocs, doc, collection } from "firebase/firestore";
 import OrderInfo from './components/subcomponents/orderInfo';
 import Image from "next/image";
 import { useRouter } from 'next/router';
-// import { google } from 'googleapis';
-// import axios from 'axios';
+
+
 
 
 export default function Home() {
@@ -70,7 +70,7 @@ return (
       <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
       <OrderInfo orderIDs={itemsInCart} total={total}/>
       
-      <Link href={"/admin"}>Go to Admin Dashboard</Link>
+      <Link href={"/login"}>Go to Admin Dashboard</Link>
    </div>
 );
 

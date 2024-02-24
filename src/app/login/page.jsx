@@ -2,7 +2,7 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Router, useRouter } from "next/navigation";
 import { FIREBASE_APP } from "../../../firebaseConfig";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 
@@ -12,19 +12,30 @@ export default function Home() {
     const [password, setPassword] = useState('');
     const router = useRouter();
     const [loginError, setLoginError] = useState(' ');
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const auth = getAuth();
+
+    localStorage.setItem('isLoggedIn', 'false');
 
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            router.push('/admin')
+            setIsLoggedIn(true);
+            localStorage.setItem('isLoggedIn', isLoggedIn);
+            router.push('/admin');
         })
         .catch((error) => {
             setLoginError('Incorrect email or password');
+            setIsLoggedIn(false);
+            localStorage.setItem('isLoggedIn', isLoggedIn);
         });
+    }
+
+    if (auth.currentUser) {
+        router.push('/admin');
     }
 
     return (

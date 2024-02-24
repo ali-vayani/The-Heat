@@ -7,7 +7,7 @@ import { FIRESTORE_DB } from "../../firebaseConfig";
 import { getDocs, doc, collection } from "firebase/firestore";
 import OrderInfo from './components/subcomponents/orderInfo';
 import Image from "next/image";
-import { useRouter } from 'next/router';
+
 
 
 
@@ -31,7 +31,6 @@ export default function Home() {
 
   const navigateToOrder = () => {
     localStorage.setItem('itemsInCart', JSON.stringify(itemsInCart));
-    // exportDataToGoogleSheet();
   };
   
   // Justs prints out stuff for dev purposes

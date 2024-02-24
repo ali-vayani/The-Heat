@@ -6,13 +6,18 @@ import Image from "next/image";
 import SetUpMenu from "../components/setUpMenu";
 import OrdersTable from "../components/ordersTable";
 import { useRouter } from "next/navigation";
-
-
+import { getAuth } from "firebase/auth";
 
 export default function Home() {
 
   const [orders, setOrders] = useState([]);
   const router = useRouter();
+  const auth = getAuth();
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
+
+  if (isLoggedIn != 'true') {
+    router.push("/login"); // Redirect to the login page if not logged in
+  }
 
   useEffect(() => {
     const fetchFromDB = async () => {
@@ -26,6 +31,8 @@ export default function Home() {
 
     fetchFromDB();
   }, []);
+
+
 
   const goToMenuPage = () => {
       router.push('/')
@@ -46,7 +53,7 @@ return (
         <OrdersTable orders={orders}/>
       </div>
       <div className="flex justify-center flex-1 bg-primary rounded-xl">
-          <button onClick={goToMenuPage} className="text-5xl w-full p-4">Return back to Menu page</button>
+          <button onClick={goToMenuPage} className="text-3xl w-full p-4">Return back to Menu page</button>
       </div>
 
    </div>

@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Sriracha:wght@400&family=Sora:wght@800&display=swap');
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -15,12 +17,13 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-/* html {
-  background: #0a0a0a;
-} */
+html {
+	font-family: 'Sora', sans-serif;
+}
 
 body {
   color: #efe3d9;
+  font-family: 'Sora', sans-serif;
   height: 100%;
   --units: 1.5vmax;
 	--brick1: #0a0a0a;

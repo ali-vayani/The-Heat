@@ -57,7 +57,7 @@ export default function OrderInfo({orderIDs, total})
         <div className="flex flex-col flex-1 w-2/3 items-center ml-12 mr-6 mt-4 pb-8 xs:max-sm:items-center xs:max-sm:justify-center xs:max-sm:m-0 xs:max-sm:w-11/12">
             <div className="flex flex-1 justify-center items-center xs:max-sm:items-center xs:max-sm:justify-center w-full">
             
-                <h2 className=" mt-4 text-7xl mb-4 xs:max-sm:my-0">Info</h2>
+                <h2 className=" mt-4 text-7xl mb-4 xs:max-sm:my-4 xs:max-sm:text-center"> Order Info</h2>
             </div>
             <div className="flex bg-primary flex-col rounded-xl my-2 w-full">
                 <input

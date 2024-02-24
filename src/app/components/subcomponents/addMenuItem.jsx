@@ -34,16 +34,16 @@ export default function AddMenuItem({ setItems, setDbID }) {
 
 
     return (
-        <div className="bg-primary w-11/12 h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4 text-primary">
+        <div className="bg-primary w-11/12 h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4 text-primary xs:max-sm:w-full">
             <input
-                className="text-2xl p-2 rounded my-2 w-4/12 mx-2"
+                className="text-2xl p-2 rounded my-2 w-4/12 mx-2 xs:max-sm:text-sm"
                 type="text"
                 placeholder="Item name"
                 value={item}
                 onChange={(e) => setItem(e.target.value)}
             />
             <input
-                className="text-2xl p-2 rounded my-2 w-4/12 mx-2"
+                className="text-2xl p-2 rounded my-2 w-4/12 mx-2 xs:max-sm:text-sm"
                 type="number"
                 placeholder="Price ($)"
                 value={price}

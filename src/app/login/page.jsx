@@ -16,26 +16,20 @@ export default function Home() {
 
     const auth = getAuth();
 
-    localStorage.setItem('isLoggedIn', 'false');
-
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             setIsLoggedIn(true);
-            localStorage.setItem('isLoggedIn', isLoggedIn);
+            localStorage.setItem('isLoggedIn', true); // Store boolean value directly
             router.push('/admin');
         })
         .catch((error) => {
             setLoginError('Incorrect email or password');
             setIsLoggedIn(false);
-            localStorage.setItem('isLoggedIn', isLoggedIn);
+            localStorage.setItem('isLoggedIn', false); // Store boolean value directly
         });
-    }
-
-    if (auth.currentUser) {
-        router.push('/admin');
     }
 
     return (
@@ -55,16 +49,18 @@ export default function Home() {
                         type="text"
                         className="text-4xl bg-transparent placeholder-text p-4"
                         placeholder="Email"
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className="flex bg-primary flex-col rounded-xl my-2 w-full">
-                        <input
-                            type="password"
-                            className="text-4xl bg-transparent placeholder-text p-4"
-                            placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                    <input
+                        type="password"
+                        className="text-4xl bg-transparent placeholder-text p-4"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="flex justify-center flex-1 bg-primary w-full rounded-xl my-2">
                     <button onClick={handleSignIn} className="text-5xl w-full p-4">Login</button>

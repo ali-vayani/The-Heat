@@ -25,6 +25,8 @@ export default function Home() {
   const [howEat, setHowEat] = useState('plated');
   const [howPay, setHowPay] = useState('card');
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
 
 
@@ -50,6 +52,8 @@ export default function Home() {
     .catch((error) => {
       console.error("Error getting documents: ", error);
     });
+
+    localStorage.setItem('isLoggedIn', isLoggedIn);
 
   }, []);
 

@@ -33,7 +33,7 @@ export default function Home() {
             <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"
-              width={750}
+              width={250}
               height={240}
               priority
             />

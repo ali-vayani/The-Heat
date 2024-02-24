@@ -5,12 +5,14 @@ import { doc, collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 import SetUpMenu from "../components/setUpMenu";
 import OrdersTable from "../components/ordersTable";
+import { useRouter } from "next/navigation";
 
 
 
 export default function Home() {
 
   const [orders, setOrders] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFromDB = async () => {
@@ -24,6 +26,10 @@ export default function Home() {
 
     fetchFromDB();
   }, []);
+
+  const goToMenuPage = () => {
+      router.push('/')
+  }
 
 return (
    <div className="h-full flex items-center flex-col mb-8 brick-background">
@@ -39,6 +45,10 @@ return (
         <SetUpMenu/>
         <OrdersTable orders={orders}/>
       </div>
+      <div className="flex justify-center flex-1 bg-primary rounded-xl">
+          <button onClick={goToMenuPage} className="text-5xl w-full p-4">Return back to Menu page</button>
+      </div>
+
    </div>
 );
 

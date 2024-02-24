@@ -54,11 +54,15 @@ export default function OrderInfo({orderIDs, total})
       };
 
     return (
-        <div className="flex flex-col flex-1 w-2/3 items-center ml-12 mr-6 mt-4 pb-8">
+        <div className="flex flex-col flex-1 w-2/3 items-center ml-12 mr-6 mt-4 pb-8 xs:max-sm:items-center xs:max-sm:justify-center xs:max-sm:m-0 xs:max-sm:w-11/12">
+            <div className="flex flex-1 justify-center items-center xs:max-sm:items-center xs:max-sm:justify-center w-full">
+            
+                <h2 className=" mt-4 text-7xl mb-4 xs:max-sm:my-0">Info</h2>
+            </div>
             <div className="flex bg-primary flex-col rounded-xl my-2 w-full">
                 <input
                 type="text"
-                className="text-4xl bg-transparent placeholder-text p-4"
+                className="text-4xl bg-transparent placeholder-text p-4 xs:max-sm:text-2xl"
                 placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
                 />
@@ -67,7 +71,7 @@ export default function OrderInfo({orderIDs, total})
             <div className="flex justify-between bg-primary rounded-xl my-2 w-full">
                 <input
                 type="number"
-                className="text-4xl rounded-xl bg-transparent placeholder-text w-1/2 p-4"
+                className="text-4xl rounded-xl bg-transparent placeholder-text w-1/2 p-4 xs:max-sm:text-2xl"
                 placeholder="Hour"
                 min={1}
                 max={12}
@@ -78,7 +82,7 @@ export default function OrderInfo({orderIDs, total})
                 </p>
                 <input
                 type="number"
-                className="text-4xl rounded-xl bg-transparent placeholder-text w-1/2 p-4"
+                className="text-4xl rounded-xl bg-transparent placeholder-text w-1/2 p-4 xs:max-sm:text-2xl"
                 placeholder="Minute"
                 min={0}
                 max={59}
@@ -86,13 +90,13 @@ export default function OrderInfo({orderIDs, total})
                 />
             </div>
             <div className="flex justify-between bg-primary w-full rounded-xl my-2">
-                <button onClick={() => setHowEat('plated')} className={displayEating('plated')}>Plated</button>
-                <button onClick={() => setHowEat('to go')} className={displayEating('to go')}>To Go</button>
+                <button onClick={() => setHowEat('plated')} className={`xs:max-sm:text-2xl ${displayEating('plated')}`}>Plated</button>
+                <button onClick={() => setHowEat('to go')} className={`xs:max-sm:text-2xl ${displayEating('to go')}`}>To Go</button>
             </div>
             <div className="flex justify-between bg-primary w-full rounded-xl my-2">
-                <button onClick={() => setHowPay('cash')} className={displayPayment('cash')}>Cash</button>
-                <button onClick={() => setHowPay('card')} className={displayPayment('card')}>Card</button>
-                <button onClick={() => setHowPay('pre paid')} className={displayPayment('pre paid')}>Pre Paid</button>
+                <button onClick={() => setHowPay('cash')} className={`xs:max-sm:text-2xl ${displayPayment('cash')}`}>Cash</button>
+                <button onClick={() => setHowPay('card')} className={`xs:max-sm:text-2xl ${displayPayment('card')}`}>Card</button>
+                <button onClick={() => setHowPay('pre paid')} className={`xs:max-sm:text-2xl ${displayPayment('pre paid')}`}>Pre Paid</button>
             </div>
             {
                 !hasOrdered && (

@@ -42,12 +42,12 @@ export default function Home() {
               height={240}
               priority
             />
-            <div className="flex flex-col w-1/2 items-center justify-center m-10">
+            <div className="flex flex-col w-1/2 items-center justify-center m-10 xs:max-sm:w-11/12 xs:max-sm:m-0">
                 <div className=" flex text-red-500 text-xl mb-4">{loginError}</div>
                 <div className="flex bg-primary flex-col rounded-xl my-2 w-full">
                     <input
                         type="text"
-                        className="text-4xl bg-transparent placeholder-text p-4"
+                        className="text-4xl bg-transparent placeholder-text p-4 xs:max-sm:text-2xl"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -56,7 +56,7 @@ export default function Home() {
                 <div className="flex bg-primary flex-col rounded-xl my-2 w-full">
                     <input
                         type="password"
-                        className="text-4xl bg-transparent placeholder-text p-4"
+                        className="text-4xl bg-transparent placeholder-text p-4 xs:max-sm:text-2xl"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}

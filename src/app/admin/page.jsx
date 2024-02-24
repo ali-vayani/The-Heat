@@ -56,9 +56,7 @@ export default function Home() {
     }
 
 
-  // if (loading || !isLoggedIn) {
-  //   return null; // Render nothing while loading or if not logged in
-  // }
+
 
   return (
     <AuthGuard>
@@ -70,10 +68,10 @@ export default function Home() {
         height={240}
         priority
       />
-      <h1 className="text-9xl mt-8 mb-2"> Admin Page </h1>
+      <h1 className="text-9xl mt-8 mb-2 xs:max-sm:m-0 xs:max-sm:flex xs:max-sm:flex-col"> Admin Page </h1>
       <div className="w-full flex flex-col items-center justify-center mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <SetUpMenu />
-        <OrdersTable orders={orders} />
+        {/* <OrdersTable orders={orders} /> */}
       </div>
       <div className="flex justify-center flex-1 bg-primary rounded-xl">
         <button onClick={goToMenuPage} className="text-3xl w-full p-4">Return back to Menu page</button>

@@ -58,7 +58,7 @@ export default function Home() {
   }, []);
 
 return (
-   <div className="h-full flex items-center flex-col mb-8 brick-background">
+   <div className="h-full flex w-full items-center flex-col mb-8 brick-background xs:max-sm:w-full">
       <Image
               src="/TheHeatLogo.png"
               alt="The Heat Logo"
@@ -70,8 +70,8 @@ return (
         <Menu setItems={setItemsInCart} itemsID={items} className="xs:max-sm:w-full"/>
         <Cart items={itemsInCart} className="xs:max-sm:w-full " setTotalForHome={setTotal}/>
       </div>
-      <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2>
-      <OrderInfo orderIDs={itemsInCart} total={total}/>
+      {/* <h2 className=" mt-4 text-7xl mb-4 ">Order Info</h2> */}
+      <OrderInfo orderIDs={itemsInCart} total={total} className="xs:max-sm:w-full"/>
       
       <Link href={"/login"}>Go to Admin Dashboard</Link>
    </div>

@@ -71,8 +71,8 @@ export default function SetUpMenu() {
     };
 
     return (
-        <div className="w-2/3 flex items-center ml-12 mr-6 pb-8 rounded-xl flex-col xs:max-sm:w-full xs:max-sm:ml-0 xs:max-sm:mr-0">
-            <h2 className="mt-4 text-7xl mb-4">Make Menu</h2>
+        <div className="w-2/3 flex items-center ml-12 mr-6 pb-8 rounded-xl flex-col xs:max-sm:w-11/12 xs:max-sm:ml-0 xs:max-sm:mr-0">
+            <h2 className="mt-4 text-5xl mb-4">Make Menu</h2>
             {currentMenuItems}
             {menuItems}
             <button

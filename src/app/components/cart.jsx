@@ -50,12 +50,12 @@ export default function Cart({items, setTotalForHome}) {
         <div className="w-1/3 flex items-center justify-start rounded-xl ml-6 mr-12 flex-col xs:max-sm:w-11/12 xs:max-sm:justify-center xs:max-sm:m-0">
             <div className="w-full">
                 <h2 className="text-7xl mt-4 mb-4 text-center xs:max-sm:w-full"> Cart </h2>
-                <div className="w-11/12 flex justify-evenly items-center text-3xl mb-4 xs:max-sm:text-2xl xs:max-sm:w-full">
+                <div className="w-11/12 flex justify-evenly items-center text-3xl mb-4 xs:max-sm:text-xl xs:max-sm:w-full">
                     <span>Items </span>
                     <span>Quantity </span>
                     <span>Price </span>
                 </div>
-                <div className="w-full min-h-96 flex flex-col justify-start items-center xs:max-sm:min-h-auto xs:max-sm:items-end">
+                <div className="w-full min-h-96 flex flex-col justify-start items-center xs:max-sm:min-h-auto xs:max-sm:items-end ">
                      { //Maps through the menu items and displays them
                     cartItems.map((item, index) => (
                         <CartItems key={index} price={`$${parseFloat(item.price * parseInt(item.quantity)).toFixed(2)}`} item={item.item} quantity={item.quantity}/>

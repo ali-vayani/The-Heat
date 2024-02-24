@@ -33,17 +33,17 @@ export default function EditMenuItem({ setItems, items, prices, id, setListOfIDs
     if(!isEditable)
     {
         return (
-            <div className="bg-primary w-11/12 h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4 text-text">
-                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2">{item}</div>
-                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2">${price}</div>
+            <div className="bg-primary w-full h-auto flex flex justify-center items-center rounded-xl my-1.5 p-4 text-text ">
+                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2 xs:max-sm:text-sm">{item}</div>
+                <div className="text-2xl p-2 rounded my-2 w-4/12 mx-2 xs:max-sm:text-sm">${price}</div>
                 <button
-                    className="bg-accent text-xl p-2 rounded my-2 w-4/12 mx-2 text-text"
+                    className="bg-accent text-xl p-2 rounded my-2 w-4/12 mx-2 text-text xs:max-sm:text-sm"
                     onClick={() => setIsEditable(true)}
                 >
                     Edit Item
                 </button>
                 <button
-                    className="bg-redd text-xl p-2 rounded my-2 w-4/12 mx-2 text-text"
+                    className="bg-redd text-xl p-2 rounded my-2 w-4/12 mx-2 text-text xs:max-sm:text-sm"
                     onClick={handleDelete}
                 >
                     Delete Item

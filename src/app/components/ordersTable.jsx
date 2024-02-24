@@ -16,7 +16,7 @@ function OrdersTable({ orders }) {
         {orders.map((order) => (
           <tr key={order['id']} className="border-b border-gray-200">
             <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{order['name']}</td>
-            <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{`${order['hour']}:${order['minute'].padStart(2, '0')}`}</td>
+            <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{`${order['hour']}:${String(order['minute']).padStart(2, '0')}`}</td>
             <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{order['howEat']}</td>
             <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{order['howPay']}</td>
             <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">

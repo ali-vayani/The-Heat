@@ -25,7 +25,7 @@ export default function EditMenuItem({ setItems, items, prices, id, setListOfIDs
     };
     const handleDelete = async () => {
         if(confirm("Are you sure you want to delete this item?")) {
-            await deleteDoc(doc(FIRESTORE_DB, "menu", id));
+            await deleteDoc(doc(FIRESTORE_DB, "Menu", id));
             setListOfIDs(prevIDs => prevIDs.filter(currentId => currentId !== id));
         }
     };

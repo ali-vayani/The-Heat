@@ -18,6 +18,7 @@ function OrdersTable({ orders, updateOrder }) {
           <th className="px-5 py-3 border-b-2 border-gray-200 bg-background text-left text-xs font-semibold text-text uppercase tracking-wider xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">Paid?</th>
           <th className="px-5 py-3 border-b-2 border-gray-200 bg-background text-left text-xs font-semibold text-text uppercase tracking-wider xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">Order Items</th>
           <th className="px-5 py-3 border-b-2 border-gray-200 bg-background text-left text-xs font-semibold text-text uppercase tracking-wider xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">Total</th>
+          <th className="px-5 py-3 border-b-2 border-gray-200 bg-background text-left text-xs font-semibold text-text uppercase tracking-wider xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">Extra Info</th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,7 @@ function OrdersTable({ orders, updateOrder }) {
               </ul>
             </td>
             <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">${order['total']}</td>
+            <td className="px-5 py-5 bg-primary text-sm xs:max-sm:px-0 xs:max-sm:text-center xs:max-sm:text-xs">{order['extraInfo']}</td>
           </tr>
         ))}
       </tbody>

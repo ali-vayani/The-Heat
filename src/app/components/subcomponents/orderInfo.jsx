@@ -14,6 +14,7 @@ export default function OrderInfo({orderIDs, total})
     const [id, setId] = useState(100000 + Math.floor(Math.random()*10));
     const[order, setOrder] = useState([])
     const [paid, setPaid] = useState(false);
+    const [extraInfo, setExtraInfo] = useState('');
 
     const displayPayment = (paymentMethod) => {
         return `flex-1 text-4xl rounded-xl m-4 py-1 ${howPay === paymentMethod ? 'bg-selected' : 'bg-accent'}`;
@@ -49,6 +50,7 @@ export default function OrderInfo({orderIDs, total})
             howEat: updatedStates.howEat,
             howPay: updatedStates.howPay,
             paid: (howPay === 'pre paid'),
+            extraInfo: extraInfo,
             order: order,
             total: total
           });
@@ -100,6 +102,14 @@ export default function OrderInfo({orderIDs, total})
                 <button onClick={() => setHowPay('cash')} className={`xs:max-sm:text-2xl ${displayPayment('cash')}`}>Cash</button>
                 <button onClick={() => setHowPay('card')} className={`xs:max-sm:text-2xl ${displayPayment('card')}`}>Card</button>
                 <button onClick={() => setHowPay('pre paid')} className={`xs:max-sm:text-2xl ${displayPayment('pre paid')}`}>Pre Paid</button>
+            </div>
+            <div className="flex justify-between bg-primary rounded-xl my-2 w-full">
+                <input
+                type="text"
+                className="text-4xl rounded-xl bg-transparent placeholder-text w-full p-4 xs:max-sm:text-2xl"
+                placeholder="(allergies, preferences, etc.)"
+                onChange={(e) => setExtraInfo(e.target.value)}
+                />
             </div>
             {
                 !hasOrdered && (

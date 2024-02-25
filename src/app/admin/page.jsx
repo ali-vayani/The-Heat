@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import { FIRESTORE_DB } from "../../../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import Image from "next/image";
 import SetUpMenu from "../components/setUpMenu";
 import OrdersTable from "../components/ordersTable";
@@ -55,7 +55,17 @@ export default function Home() {
         return null; // Render nothing while loading
     }
 
-
+    const updateOrder = async (orderId, updateData) => {
+      const orderIndex = orders.findIndex((order) => order.id === orderId);
+      if (orderIndex !== -1) {
+        const updatedOrders = [...orders];
+        updatedOrders[orderIndex] = { ...updatedOrders[orderIndex], ...updateData };
+        setOrders(updatedOrders);
+  
+        // Update Firestore with the new data
+        await updateDoc(doc(FIRESTORE_DB, 'Orders', orderId), updateData);
+      }
+    };
 
 
   return (
@@ -71,7 +81,7 @@ export default function Home() {
       <h1 className="text-9xl mt-8 mb-2 xs:max-sm:m-0 xs:max-sm:text-7xl xs:max-sm:w-auto xs:max-sm:text-center"> Admin Page </h1>
       <div className="w-full flex flex-col items-center justify-center mt-12 backdrop-blur-sm xs:max-sm:flex-col xs:max-sm:items-center">
         <SetUpMenu />
-        <OrdersTable orders={orders} />
+        <OrdersTable orders={orders} updateOrder={updateOrder}/>
       </div>
       <div className="flex justify-center flex-1 bg-primary rounded-xl xs:max-sm:w-11/12">
         <button onClick={goToMenuPage} className="text-3xl w-full p-4">Return back to Menu page</button>

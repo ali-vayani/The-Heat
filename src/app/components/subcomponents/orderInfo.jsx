@@ -13,6 +13,7 @@ export default function OrderInfo({orderIDs, total})
     const [hasOrdered, setHasOrdered] = useState(false);
     const [id, setId] = useState(100000 + Math.floor(Math.random()*10));
     const[order, setOrder] = useState([])
+    const [paid, setPaid] = useState(false);
 
     const displayPayment = (paymentMethod) => {
         return `flex-1 text-4xl rounded-xl m-4 py-1 ${howPay === paymentMethod ? 'bg-selected' : 'bg-accent'}`;
@@ -47,10 +48,12 @@ export default function OrderInfo({orderIDs, total})
             minute: updatedStates.minute,
             howEat: updatedStates.howEat,
             howPay: updatedStates.howPay,
+            paid: (howPay === 'pre paid'),
             order: order,
             total: total
           });
           setHasOrdered(true);
+          setPaid(howPay === 'pre paid');
       };
 
     return (
